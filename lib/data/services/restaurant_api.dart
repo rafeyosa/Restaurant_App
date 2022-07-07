@@ -23,7 +23,7 @@ class RestaurantApi {
       return dataJson['restaurants'] as List;
     } catch (e) {
       log(e.toString());
-      return [];
+      throw Exception('Failed to get Restaurant List');
     }
   }
 
@@ -45,7 +45,7 @@ class RestaurantApi {
       return dataJson['restaurant'];
     } catch (e) {
       log(e.toString());
-      throw Exception('Failed to get RestaurantDetail');
+      throw Exception('Failed to get Restaurant Detail');
     }
   }
 
@@ -69,7 +69,7 @@ class RestaurantApi {
       return dataJson['restaurants'] as List;
     } catch (e) {
       log(e.toString());
-      return [];
+      throw Exception('Failed to get Restaurant Search');
     }
   }
 
@@ -98,7 +98,7 @@ class RestaurantApi {
       return dataJson['customerReviews'] as List;
     } catch (e) {
       log(e.toString());
-      return [];
+      throw Exception('Failed to add Review');
     }
   }
 }
