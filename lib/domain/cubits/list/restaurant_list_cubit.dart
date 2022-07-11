@@ -17,18 +17,18 @@ class RestaurantListCubit extends Cubit<RestaurantListState> {
   }
 
   Future<void> fetchRestaurants() async {
-    emit(state.copyWith(status: ResultStatus.InProgress));
+    emit(state.copyWith(status: ResultStatus.inProgress));
 
     try {
       List<Restaurant> restaurants = await _repository.fetchRestaurants();
 
       if (restaurants.isEmpty) {
-        emit(state.copyWith(status: ResultStatus.NoData));
+        emit(state.copyWith(status: ResultStatus.noData));
       } else {
-        emit(state.copyWith(status: ResultStatus.Success, restaurants: restaurants));
+        emit(state.copyWith(status: ResultStatus.success, restaurants: restaurants));
       }
     } catch (_) {
-      emit(state.copyWith(status: ResultStatus.Failure));
+      emit(state.copyWith(status: ResultStatus.failure));
     }
   }
 
@@ -56,24 +56,24 @@ class RestaurantListCubit extends Cubit<RestaurantListState> {
       fetchRestaurants();
     } else {
       emit(state.copyWith(
-          status: ResultStatus.Success
+          status: ResultStatus.success
       ));
     }
   }
 
   Future<void> searchRestaurants(String search) async {
-    emit(state.copyWith(status: ResultStatus.InProgress));
+    emit(state.copyWith(status: ResultStatus.inProgress));
 
     try {
       List<Restaurant> restaurants = await _repository.searchRestaurants(search);
 
       if (restaurants.isEmpty) {
-        emit(state.copyWith(status: ResultStatus.NoData));
+        emit(state.copyWith(status: ResultStatus.noData));
       } else {
-        emit(state.copyWith(status: ResultStatus.Success, restaurantsSearch: restaurants));
+        emit(state.copyWith(status: ResultStatus.success, restaurantsSearch: restaurants));
       }
     } catch (_) {
-      emit(state.copyWith(status: ResultStatus.Failure));
+      emit(state.copyWith(status: ResultStatus.failure));
     }
   }
 }

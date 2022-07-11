@@ -17,6 +17,12 @@ class CustomerReview extends Equatable {
     date: json['date']
   );
 
+  Map<String, dynamic> toJson() => {
+    "name": name,
+    "review": review,
+    "date": date,
+  };
+
   @override
   List<Object?> get props => [name, review, date];
 }

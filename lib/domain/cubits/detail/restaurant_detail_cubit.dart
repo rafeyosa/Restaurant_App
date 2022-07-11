@@ -4,6 +4,7 @@ import 'package:formz/formz.dart';
 
 import '../../../data/models/add_review.dart';
 import '../../../data/models/customer_review.dart';
+import '../../../data/models/restaurant.dart';
 import '../../../data/models/restaurant_detail.dart';
 import '../../../data/repositories/restaurant_repository.dart';
 import '../../../presentation/detail/form_inputs/text_input.dart';
@@ -19,21 +20,21 @@ class RestaurantDetailCubit extends Cubit<RestaurantDetailState> {
   final RestaurantRepository _repository;
 
   Future<void> fetchRestaurantDetail(String id) async {
-    emit(state.copyWith(status: ResultStatus.InProgress));
+    emit(state.copyWith(status: ResultStatus.inProgress));
 
     try {
       RestaurantDetail restaurant = await _repository.getRestaurantDetail(id);
 
       if (restaurant.isEmpty) {
-        emit(state.copyWith(status: ResultStatus.NoData));
+        emit(state.copyWith(status: ResultStatus.noData));
       } else {
         emit(state.copyWith(
-            status: ResultStatus.Success,
+            status: ResultStatus.success,
             restaurant: restaurant,
             reviews: restaurant.customerReviews));
       }
     } catch (_) {
-      emit(state.copyWith(status: ResultStatus.Failure));
+      emit(state.copyWith(status: ResultStatus.failure));
     }
   }
 
@@ -52,7 +53,8 @@ class RestaurantDetailCubit extends Cubit<RestaurantDetailState> {
       if (reviews.isEmpty) {
         emit(state.copyWith(formStatus: FormzStatus.submissionCanceled));
       } else {
-        emit(state.copyWith(reviews: reviews, formStatus: FormzStatus.submissionSuccess));
+        emit(state.copyWith(
+            reviews: reviews, formStatus: FormzStatus.submissionSuccess));
       }
     } catch (_) {
       emit(state.copyWith(formStatus: FormzStatus.submissionFailure));
@@ -83,5 +85,29 @@ class RestaurantDetailCubit extends Cubit<RestaurantDetailState> {
         formStatus: FormzStatus.pure,
       ),
     );
+  }
+
+  Future<void> checkFavorite(String id) async {
+    final isFavorite = await _repository.isRestaurantFavorite(id);
+    emit(state.copyWith(isFavorite: isFavorite));
+  }
+
+  Future<void> setFavorite(bool isFavorite) async {
+    if (isFavorite) {
+      final restaurant = Restaurant(
+        id: state.restaurant.id,
+        name: state.restaurant.name,
+        description: state.restaurant.description,
+        pictureId: state.restaurant.pictureId,
+        city: state.restaurant.city,
+        rating: state.restaurant.rating,
+      );
+
+      await _repository.addRestaurantFavorite(restaurant);
+      emit(state.copyWith(isFavorite: true));
+    } else {
+      await _repository.removeRestaurantFavorite(state.restaurant.id);
+      emit(state.copyWith(isFavorite: false));
+    }
   }
 }

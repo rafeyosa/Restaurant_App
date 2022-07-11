@@ -6,23 +6,26 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'data/repositories/restaurant_repository.dart';
 import 'data/services/restaurant_api.dart';
+import 'data/services/restaurant_database.dart';
 import 'domain/cubits/detail/restaurant_detail_cubit.dart';
 import 'domain/cubits/list/restaurant_list_cubit.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
-  MyApp({Key? key}) : super(key: key);
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   State<MyApp> createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
-  final RestaurantRepository _restaurantRepository =
-      RestaurantRepository(restaurantApi: RestaurantApi());
+  final RestaurantRepository _restaurantRepository = RestaurantRepository(
+    restaurantApi: RestaurantApi(),
+    restaurantDatabase: RestaurantDatabase.instance,
+  );
 
   late RestaurantListCubit _restaurantsCubit;
   late RestaurantDetailCubit _restaurantDetailCubit;
@@ -39,13 +42,13 @@ class _MyAppState extends State<MyApp> {
           primarySwatch: Colors.amber,
           primaryColor: Colors.white,
           visualDensity: VisualDensity.adaptivePlatformDensity),
-      initialRoute: RESTAURANT_LIST_PAGE_ROUTE,
+      initialRoute: restaurantListPageRoute,
       routes: {
-        RESTAURANT_LIST_PAGE_ROUTE: (context) => BlocProvider.value(
+        restaurantListPageRoute: (context) => BlocProvider.value(
               value: _restaurantsCubit..initCubit(),
               child: const RestaurantListPage(),
             ),
-        RESTAURANT_DETAIL_PAGE_ROUTE: (context) => BlocProvider.value(
+        restaurantDetailPageRoute: (context) => BlocProvider.value(
               value: _restaurantDetailCubit,
               child: RestaurantDetailPage(
                 id: ModalRoute.of(context)?.settings.arguments as String,
@@ -58,6 +61,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void dispose() {
     _restaurantsCubit.close();
+    _restaurantDetailCubit.close();
     super.dispose();
   }
 }

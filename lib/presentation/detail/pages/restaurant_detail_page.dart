@@ -1,3 +1,4 @@
+import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
@@ -71,6 +72,7 @@ class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
     _scrollController = ScrollController()..addListener(() => setState(() {}));
     cubit = BlocProvider.of<RestaurantDetailCubit>(context);
     cubit.fetchRestaurantDetail(widget.id);
+    cubit.checkFavorite(widget.id);
   }
 
   @override
@@ -78,11 +80,11 @@ class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
     return Scaffold(
       body: BlocBuilder<RestaurantDetailCubit, RestaurantDetailState>(
         builder: (context, state) {
-          if (state.status == ResultStatus.InProgress) {
+          if (state.status == ResultStatus.inProgress) {
             return const Center(child: CircularProgressIndicator());
           }
 
-          if (state.status == ResultStatus.NoData) {
+          if (state.status == ResultStatus.noData) {
             return const Center(
               child: Text(
                 'Informasi tidak tersedia',
@@ -95,7 +97,7 @@ class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
             );
           }
 
-          if (state.status == ResultStatus.Failure) {
+          if (state.status == ResultStatus.failure) {
             return const Center(
               child: Text(
                 'Gagal mendapatkan data',
@@ -130,7 +132,7 @@ class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
                   expandedHeight: kExpandedHeight,
                   flexibleSpace: FlexibleSpaceBar(
                     background: Image.network(
-                      '$MEDIUM_PICTURE_URL/${state.restaurant.pictureId}',
+                      '$mediumPictureUrl/${state.restaurant.pictureId}',
                       fit: BoxFit.cover,
                       errorBuilder: (context, error, stackTrace) {
                         return Container(
@@ -192,6 +194,7 @@ class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               const Icon(
                                 Icons.star,
@@ -208,6 +211,12 @@ class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
                                 ),
                               ),
                               const SizedBox(width: 6),
+                              FavoriteButton(
+                                isFavorite: state.isFavorite,
+                                valueChanged: (isFavorite) {
+                                  cubit.setFavorite(isFavorite);
+                                },
+                              )
                             ],
                           ),
                         ],

@@ -1,7 +1,7 @@
 enum ResultStatus {
-  Pure,
-  NoData,
-  InProgress,
-  Failure,
-  Success
+  pure,
+  noData,
+  inProgress,
+  failure,
+  success
 }

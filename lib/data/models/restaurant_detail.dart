@@ -5,17 +5,18 @@ import 'customer_review.dart';
 import 'menu.dart';
 
 class RestaurantDetail extends Equatable {
-  const RestaurantDetail(
-      {required this.id,
-      required this.name,
-      required this.description,
-      required this.city,
-      required this.address,
-      required this.pictureId,
-      required this.categories,
-      required this.menus,
-      required this.rating,
-      required this.customerReviews});
+  const RestaurantDetail({
+    required this.id,
+    required this.name,
+    required this.description,
+    required this.city,
+    required this.address,
+    required this.pictureId,
+    required this.categories,
+    required this.menus,
+    required this.rating,
+    required this.customerReviews
+  });
 
   final String id;
   final String? name;
@@ -23,10 +24,10 @@ class RestaurantDetail extends Equatable {
   final String? city;
   final String? address;
   final String? pictureId;
-  final List<Category>? categories;
+  final List<Category> categories;
   final Menu? menus;
   final num? rating;
-  final List<CustomerReview>? customerReviews;
+  final List<CustomerReview> customerReviews;
 
   static const empty = RestaurantDetail(
     id: '',
@@ -36,7 +37,7 @@ class RestaurantDetail extends Equatable {
     address: '',
     pictureId: '',
     categories: [],
-    menus: null,
+    menus: Menu.empty,
     rating: 0,
     customerReviews: [],
   );
@@ -61,6 +62,19 @@ class RestaurantDetail extends Equatable {
             (json['customerReviews'] as List)
                 .map((x) => CustomerReview.fromJson(x))),
       );
+
+  Map<String, dynamic> toJson() => {
+    "id": id,
+    "name": name,
+    "description": description,
+    "city": city,
+    "address": address,
+    "pictureId": pictureId,
+    "categories": List<Category>.from(categories.map((x) => x.toJson())),
+    "menus": menus?.toJson(),
+    "rating": rating,
+    "customerReviews": List<CustomerReview>.from(customerReviews.map((x) => x.toJson())),
+  };
 
   @override
   List<Object?> get props => [

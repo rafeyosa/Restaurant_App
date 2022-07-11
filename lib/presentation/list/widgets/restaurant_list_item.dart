@@ -6,12 +6,16 @@ import '../../../utils/constant.dart';
 class RestaurantListItem extends StatelessWidget {
   final Restaurant restaurant;
 
-  const RestaurantListItem({Key? key, required this.restaurant}) : super(key: key);
+  const RestaurantListItem({Key? key, required this.restaurant})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => Navigator.of(context).pushNamed(RESTAURANT_DETAIL_PAGE_ROUTE, arguments: restaurant.id),
+      onTap: () => Navigator.of(context).pushNamed(
+        restaurantDetailPageRoute,
+        arguments: restaurant.id,
+      ),
       child: Container(
         color: Colors.white,
         padding: const EdgeInsets.only(left: 16, right: 8, top: 16, bottom: 16),
@@ -31,7 +35,7 @@ class RestaurantListItem extends StatelessWidget {
                       borderRadius: BorderRadius.circular(24),
                       image: DecorationImage(
                         image: NetworkImage(
-                            '$MEDIUM_PICTURE_URL/${restaurant.pictureId}'),
+                            '$mediumPictureUrl/${restaurant.pictureId}'),
                         fit: BoxFit.cover,
                       ),
                       boxShadow: const [

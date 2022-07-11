@@ -2,7 +2,7 @@ part of 'restaurant_list_cubit.dart';
 
 class RestaurantListState extends Equatable {
   const RestaurantListState({
-    this.status = ResultStatus.Pure,
+    this.status = ResultStatus.pure,
     required this.restaurants,
     this.isSearching = false,
     this.search = '',

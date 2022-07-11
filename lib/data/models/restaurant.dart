@@ -26,6 +26,30 @@ class Restaurant extends Equatable {
     rating: json['rating'],
   );
 
-  @override
+  Map<String, dynamic> toJson() => {
+    "id": id,
+    "name": name,
+    "description": description,
+    "pictureId": pictureId,
+    "city": city,
+    "rating": rating,
+  };
+
+@override
   List<Object?> get props => [id, name, description, pictureId, city, rating];
+}
+
+const String tableRestaurant = 'restaurants';
+
+class RestaurantField {
+  static final List<String> values = [
+    id, name, description, pictureId, city, rating
+  ];
+
+  static const String id = 'id';
+  static const String name = 'name';
+  static const String description = 'description';
+  static const String pictureId = 'pictureId';
+  static const String city = 'city';
+  static const String rating = 'rating';
 }

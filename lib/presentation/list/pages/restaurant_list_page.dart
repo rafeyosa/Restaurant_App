@@ -21,11 +21,11 @@ class RestaurantListPage extends StatelessWidget {
       ),
       body: BlocBuilder<RestaurantListCubit, RestaurantListState>(
         builder: (context, state) {
-          if (state.status == ResultStatus.InProgress) {
+          if (state.status == ResultStatus.inProgress) {
             return const Center(child: CircularProgressIndicator());
           }
 
-          if (state.status == ResultStatus.NoData) {
+          if (state.status == ResultStatus.noData) {
             return Center(
               child: Text(
                 state.isSearching
@@ -40,7 +40,7 @@ class RestaurantListPage extends StatelessWidget {
             );
           }
 
-          if (state.status == ResultStatus.Failure) {
+          if (state.status == ResultStatus.failure) {
             return const Center(
               child: Text(
                 'Gagal mendapatkan data',
