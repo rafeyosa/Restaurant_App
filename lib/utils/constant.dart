@@ -1,5 +1,7 @@
 const restaurantListPageRoute = '/restaurant/list';
 const restaurantDetailPageRoute = '/restaurant/detail';
+const favoritePageRoute = '/restaurant/favorite';
+const settingPageRoute = '/restaurant/setting';
 
 const baseImageUrl = 'https://restaurant-api.dicoding.dev/images';
 const smallPictureUrl = '$baseImageUrl/small';
