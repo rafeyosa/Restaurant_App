@@ -28,12 +28,10 @@ class _MyAppState extends State<MyApp> {
   );
 
   late RestaurantListCubit _restaurantsCubit;
-  late RestaurantDetailCubit _restaurantDetailCubit;
 
   @override
   Widget build(BuildContext context) {
     _restaurantsCubit = RestaurantListCubit(_restaurantRepository);
-    _restaurantDetailCubit = RestaurantDetailCubit(_restaurantRepository);
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -49,7 +47,7 @@ class _MyAppState extends State<MyApp> {
               child: const RestaurantListPage(),
             ),
         restaurantDetailPageRoute: (context) => BlocProvider.value(
-              value: _restaurantDetailCubit,
+              value: RestaurantDetailCubit(_restaurantRepository),
               child: RestaurantDetailPage(
                 id: ModalRoute.of(context)?.settings.arguments as String,
               ),
@@ -61,7 +59,6 @@ class _MyAppState extends State<MyApp> {
   @override
   void dispose() {
     _restaurantsCubit.close();
-    _restaurantDetailCubit.close();
     super.dispose();
   }
 }
