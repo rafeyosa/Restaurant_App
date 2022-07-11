@@ -20,7 +20,15 @@ class RestaurantDetailState extends Equatable {
   final bool isFavorite;
 
   @override
-  List<Object> get props => [status, restaurant, reviews, formStatus, name, review, isFavorite];
+  List<Object> get props => [
+        status,
+        restaurant,
+        reviews,
+        formStatus,
+        name,
+        review,
+        isFavorite,
+      ];
 
   RestaurantDetailState copyWith({
     ResultStatus? status,
@@ -38,7 +46,7 @@ class RestaurantDetailState extends Equatable {
       formStatus: formStatus ?? this.formStatus,
       name: name ?? this.name,
       review: review ?? this.review,
-      isFavorite: isFavorite ?? this.isFavorite
+      isFavorite: isFavorite ?? this.isFavorite,
     );
   }
 }
