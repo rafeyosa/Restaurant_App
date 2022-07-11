@@ -71,7 +71,9 @@ class CustomAppBar extends StatelessWidget {
               builder: (context, state) {
                 streamController.stream
                     .debounce(const Duration(seconds: 1))
-                    .listen((search) => {cubit.searchRestaurants(search)});
+                    .listen((search) => {
+                      cubit.searchRestaurants(search)
+                    });
                 if (state.isSearching) {
                   return TextField(
                     onTap: () => cubit.isSearching(),
