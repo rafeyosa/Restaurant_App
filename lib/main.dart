@@ -67,6 +67,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void dispose() {
     _restaurantsCubit.close();
+    _favoriteCubit.close();
     super.dispose();
   }
 }
