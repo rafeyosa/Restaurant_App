@@ -17,16 +17,45 @@ class CustomAppBar extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          'Restaurant',
-          style: TextStyle(
-            fontWeight: FontWeight.w600,
-            fontSize: 24,
-            color: Colors.black,
-          ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const Padding(
+              padding: EdgeInsets.only(left: 16),
+              child: Text(
+                'Restaurant',
+                style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 24,
+                  color: Colors.black,
+                ),
+              ),
+            ),
+            Row(
+              children: [
+                IconButton(
+                  icon: const Icon(
+                    Icons.favorite,
+                    color: Colors.black,
+                  ),
+                  onPressed: () {},
+                ),
+                IconButton(
+                  icon: const Icon(
+                    Icons.settings,
+                    color: Colors.black,
+                  ),
+                  onPressed: () {},
+                ),
+                const SizedBox(width: 8),
+              ],
+            ),
+          ],
         ),
-        const SizedBox(height: 12),
+        const SizedBox(height: 8),
         Container(
+          margin: const EdgeInsets.symmetric(horizontal: 16),
           padding: const EdgeInsets.only(left: 16, top: 2, bottom: 2),
           width: double.infinity,
           height: 50,
@@ -42,9 +71,7 @@ class CustomAppBar extends StatelessWidget {
               builder: (context, state) {
                 streamController.stream
                     .debounce(const Duration(seconds: 1))
-                    .listen((search) => {
-                      cubit.searchRestaurants(search)
-                    });
+                    .listen((search) => {cubit.searchRestaurants(search)});
                 if (state.isSearching) {
                   return TextField(
                     onTap: () => cubit.isSearching(),
@@ -71,8 +98,7 @@ class CustomAppBar extends StatelessWidget {
                     decoration: const InputDecoration(
                         hintText: 'Where do you want to eat ?',
                         border: InputBorder.none,
-                        suffixIcon: Icon(Icons.search, color: Colors.grey)
-                    ),
+                        suffixIcon: Icon(Icons.search, color: Colors.grey)),
                   );
                 }
               },

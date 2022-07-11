@@ -17,6 +17,7 @@ class RestaurantListPage extends StatelessWidget {
         backgroundColor: Colors.white,
         toolbarHeight: 120,
         elevation: 0.0,
+        titleSpacing: 0,
         title: CustomAppBar(),
       ),
       body: BlocBuilder<RestaurantListCubit, RestaurantListState>(
