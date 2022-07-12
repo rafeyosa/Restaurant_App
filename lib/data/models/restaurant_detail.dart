@@ -64,16 +64,16 @@ class RestaurantDetail extends Equatable {
       );
 
   Map<String, dynamic> toJson() => {
-    "id": id,
-    "name": name,
-    "description": description,
-    "city": city,
-    "address": address,
-    "pictureId": pictureId,
-    "categories": List<Category>.from(categories.map((x) => x.toJson())),
-    "menus": menus?.toJson(),
-    "rating": rating,
-    "customerReviews": List<CustomerReview>.from(customerReviews.map((x) => x.toJson())),
+    'id': id,
+    'name': name,
+    'description': description,
+    'city': city,
+    'address': address,
+    'pictureId': pictureId,
+    'categories': List<Category>.from(categories.map((x) => x.toJson())),
+    'menus': menus?.toJson(),
+    'rating': rating,
+    'customerReviews': List<CustomerReview>.from(customerReviews.map((x) => x.toJson())),
   };
 
   @override

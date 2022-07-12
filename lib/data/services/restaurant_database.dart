@@ -1,7 +1,7 @@
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
-import '../constant/db_constant.dart';
+import '../../constant/db_constant.dart';
 import '../models/restaurant.dart';
 
 class RestaurantDatabase {

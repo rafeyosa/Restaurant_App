@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../../constant/router_constant.dart';
 import '../../../data/models/restaurant.dart';
-import '../../../utils/constant.dart';
+import '../../../constant/common_constant.dart';
 
 class RestaurantListItem extends StatelessWidget {
   final Restaurant restaurant;

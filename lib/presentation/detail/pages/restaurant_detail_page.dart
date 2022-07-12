@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:restaurant_app/domain/cubits/detail/restaurant_detail_cubit.dart';
 
-import '../../../utils/constant.dart';
+import '../../../constant/common_constant.dart';
 import '../../../utils/result_status.dart';
 import '../widgets/restaurant_menu_item.dart';
 import '../widgets/review_item.dart';

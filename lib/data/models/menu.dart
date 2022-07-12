@@ -22,8 +22,8 @@ class Menu extends Equatable {
   );
 
   Map<String, dynamic> toJson() => {
-    "foods": List<Category>.from(foods.map((x) => x.toJson())),
-    "drinks": List<Category>.from(drinks.map((x) => x.toJson())),
+    'foods': List<Category>.from(foods.map((x) => x.toJson())),
+    'drinks': List<Category>.from(drinks.map((x) => x.toJson())),
   };
 
 @override

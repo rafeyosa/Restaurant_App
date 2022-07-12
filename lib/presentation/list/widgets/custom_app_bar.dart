@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:restaurant_app/domain/cubits/list/restaurant_list_cubit.dart';
 
-import '../../../utils/constant.dart';
+import '../../../constant/router_constant.dart';
 
 class CustomAppBar extends StatelessWidget {
   CustomAppBar({Key? key}) : super(key: key);

@@ -10,7 +10,7 @@ class Category extends Equatable {
   );
 
   Map<String, dynamic> toJson() => {
-    "name": name,
+    'name': name,
   };
 
   @override

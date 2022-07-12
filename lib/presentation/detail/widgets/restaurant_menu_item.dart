@@ -60,7 +60,7 @@ class RestaurantMenuItem extends StatelessWidget {
                 ),
                 child: const Center(
                   child: Text(
-                    "Rp. 100.000",
+                    'Rp. 100.000',
                     textAlign: TextAlign.end,
                     style: TextStyle(
                         fontWeight: FontWeight.w600, color: Colors.black54),

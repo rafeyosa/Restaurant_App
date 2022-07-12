@@ -18,9 +18,9 @@ class CustomerReview extends Equatable {
   );
 
   Map<String, dynamic> toJson() => {
-    "name": name,
-    "review": review,
-    "date": date,
+    'name': name,
+    'review': review,
+    'date': date,
   };
 
   @override
