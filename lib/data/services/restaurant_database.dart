@@ -5,15 +5,22 @@ import '../constant/db_constant.dart';
 import '../models/restaurant.dart';
 
 class RestaurantDatabase {
-  static final RestaurantDatabase instance = RestaurantDatabase._init();
+  static RestaurantDatabase? _instance;
 
-  static late Database _database;
+  static Database? _database;
 
-  RestaurantDatabase._init();
+  RestaurantDatabase._internal() {
+    _instance = this;
+  }
+
+  factory RestaurantDatabase() => _instance ?? RestaurantDatabase._internal();
 
   Future<Database> get database async {
+    if (_database != null) {
+      return _database!;
+    }
     _database = await _initializeDb('restaurant_db.db');
-    return _database;
+    return _database!;
   }
 
   Future<Database> _initializeDb(String filePath) async {
@@ -78,7 +85,7 @@ class RestaurantDatabase {
   }
 
   Future close() async {
-    final db = await instance.database;
+    final db = await database;
     db.close();
   }
 }

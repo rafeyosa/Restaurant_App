@@ -26,7 +26,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   final RestaurantRepository _restaurantRepository = RestaurantRepository(
     restaurantApi: RestaurantApi(),
-    restaurantDatabase: RestaurantDatabase.instance,
+    restaurantDatabase: RestaurantDatabase(),
   );
 
   late RestaurantListCubit _restaurantsCubit;
