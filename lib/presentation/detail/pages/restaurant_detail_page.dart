@@ -5,6 +5,7 @@ import 'package:formz/formz.dart';
 import 'package:restaurant_app/domain/cubits/detail/restaurant_detail_cubit.dart';
 
 import '../../../constant/common_constant.dart';
+import '../../../utils/navigation.dart';
 import '../../../utils/result_status.dart';
 import '../widgets/restaurant_menu_item.dart';
 import '../widgets/review_item.dart';
@@ -124,7 +125,7 @@ class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
                         _titleColor,
                       ),
                     ),
-                    onPressed: () => Navigator.of(context).pop(),
+                    onPressed: () => Navigation.back(),
                   ),
                   backgroundColor: Colors.white,
                   elevation: 0,
@@ -373,7 +374,7 @@ class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
                   padding: EdgeInsets.zero,
                   onPressed: () {
                     cubit.clearForm();
-                    Navigator.of(context).pop();
+                    Navigation.back();
                   },
                 ),
                 BlocBuilder<RestaurantDetailCubit, RestaurantDetailState>(
@@ -461,7 +462,7 @@ class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
                                       state.review.value,
                                     );
                                     cubit.clearForm();
-                                    Navigator.of(context).pop();
+                                    Navigation.back();
                                   } //cubit.signUpFormSubmitted()
                                 : null,
                             child: const Padding(

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:rxdart/rxdart.dart';
@@ -38,7 +39,7 @@ class NotificationHelper {
       initializationSettings,
       onSelectNotification: (String? payload) async {
         if (payload != null) {
-          print('notification payload: ' + payload);
+          log('notification payload: $payload');
         }
         selectNotificationSubject.add(payload ?? 'empty payload');
       },
@@ -85,8 +86,7 @@ class NotificationHelper {
     selectNotificationSubject.stream.listen(
       (String payload) async {
         var data = Restaurant.fromJson(json.decode(payload));
-        var article = data;
-        Navigation.intentWithData(route, article.id);
+        Navigation.intentWithData(route, data.id);
       },
     );
   }

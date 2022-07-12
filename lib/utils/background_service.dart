@@ -3,9 +3,8 @@ import 'dart:ui';
 import 'dart:isolate';
 
 import 'package:restaurant_app/data/services/restaurant_api.dart';
+import 'package:restaurant_app/main.dart';
 
-import '../data/repositories/restaurant_repository.dart';
-import '../data/services/restaurant_database.dart';
 import '../helper/notification_helper.dart';
 
 final ReceivePort port = ReceivePort();
@@ -29,7 +28,6 @@ class BackgroundService {
   }
 
   static Future<void> callback() async {
-    print('Alarm fired!');
     final NotificationHelper notificationHelper = NotificationHelper();
     var result = await RestaurantApi().getRestaurantList();
 

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../constant/router_constant.dart';
 import '../../../data/models/restaurant.dart';
 import '../../../constant/common_constant.dart';
+import '../../../utils/navigation.dart';
 
 class RestaurantListItem extends StatelessWidget {
   final Restaurant restaurant;
@@ -13,9 +14,9 @@ class RestaurantListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => Navigator.of(context).pushNamed(
+      onTap: () => Navigation.intentWithData(
         restaurantDetailPageRoute,
-        arguments: restaurant.id,
+        restaurant.id,
       ),
       child: Container(
         color: Colors.white,

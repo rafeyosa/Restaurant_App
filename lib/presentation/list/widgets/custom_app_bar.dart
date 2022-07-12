@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:restaurant_app/domain/cubits/list/restaurant_list_cubit.dart';
 
 import '../../../constant/router_constant.dart';
+import '../../../utils/navigation.dart';
 
 class CustomAppBar extends StatelessWidget {
   CustomAppBar({Key? key}) : super(key: key);
@@ -42,7 +43,7 @@ class CustomAppBar extends StatelessWidget {
                     color: Colors.black,
                   ),
                   onPressed: () {
-                    Navigator.of(context).pushNamed(favoritePageRoute);
+                    Navigation.intent(favoritePageRoute);
                   },
                 ),
                 IconButton(
@@ -50,7 +51,9 @@ class CustomAppBar extends StatelessWidget {
                     Icons.settings,
                     color: Colors.black,
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigation.intent(settingPageRoute);
+                  },
                 ),
                 const SizedBox(width: 8),
               ],
