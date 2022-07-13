@@ -29,7 +29,7 @@ class AppRouter {
     );
     restaurantsCubit = RestaurantListCubit(repository);
     favoriteCubit = FavoriteCubit(repository);
-    settingCubit = SettingCubit();
+    settingCubit = SettingCubit(repository);
     notificationHelper = NotificationHelper();
     notificationHelper.configureSelectNotificationSubject(restaurantDetailPageRoute);
   }

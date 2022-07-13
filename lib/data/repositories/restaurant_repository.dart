@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:shared_preferences/shared_preferences.dart';
+
 import '../models/add_review.dart';
 import '../models/customer_review.dart';
 import '../models/restaurant.dart';
@@ -67,4 +69,23 @@ class RestaurantRepository {
 
   Future<void> removeRestaurantFavorite(String id) async =>
       await restaurantDatabase.deleteRestaurant(id);
+
+  Future<void> setPreferenceBoolean(String keyStr, bool value) async {
+    final prefs  = await SharedPreferences.getInstance();
+
+    if (prefs.containsKey(keyStr)) {
+      prefs.clear();
+    }
+    prefs.setBool(keyStr, value);
+  }
+
+  Future<bool> getPreferenceBoolean(String keyStr) async {
+    final prefs  = await SharedPreferences.getInstance();
+
+    if (prefs.containsKey(keyStr)) {
+      var value = prefs.getBool(keyStr);
+      return value ?? false;
+    }
+    return false;
+  }
 }
