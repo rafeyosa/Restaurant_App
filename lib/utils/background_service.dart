@@ -5,6 +5,7 @@ import 'dart:isolate';
 import 'package:restaurant_app/data/services/restaurant_api.dart';
 import 'package:restaurant_app/main.dart';
 
+import '../data/models/restaurant.dart';
 import '../helper/notification_helper.dart';
 
 final ReceivePort port = ReceivePort();
@@ -29,7 +30,8 @@ class BackgroundService {
 
   static Future<void> callback() async {
     final NotificationHelper notificationHelper = NotificationHelper();
-    var result = await RestaurantApi().getRestaurantList();
+    var resultRaw = await RestaurantApi().getRestaurantList();
+    List<Restaurant> result = resultRaw.map((item) => Restaurant.fromJson(item)).toList();
 
     Random random = Random();
     var randomNumber = random.nextInt(result.length);
