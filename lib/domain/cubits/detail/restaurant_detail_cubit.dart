@@ -29,9 +29,10 @@ class RestaurantDetailCubit extends Cubit<RestaurantDetailState> {
         emit(state.copyWith(status: ResultStatus.noData));
       } else {
         emit(state.copyWith(
-            status: ResultStatus.success,
-            restaurant: restaurant,
-            reviews: restaurant.customerReviews));
+          status: ResultStatus.success,
+          restaurant: restaurant,
+          reviews: restaurant.customerReviews,
+        ));
       }
     } catch (_) {
       emit(state.copyWith(status: ResultStatus.failure));

@@ -14,12 +14,16 @@ class FavoriteCubit extends Cubit<FavoriteState> {
 
   Future<void> fetchRestaurants() async {
     emit(state.copyWith(status: ResultStatus.inProgress));
-    List<Restaurant> restaurants = await _repository.getRestaurantFavoriteList();
+    List<Restaurant> restaurants =
+        await _repository.getRestaurantFavoriteList();
 
     if (restaurants.isEmpty) {
       emit(state.copyWith(status: ResultStatus.noData));
     } else {
-      emit(state.copyWith(status: ResultStatus.success, restaurants: restaurants));
+      emit(state.copyWith(
+        status: ResultStatus.success,
+        restaurants: restaurants,
+      ));
     }
   }
 }
