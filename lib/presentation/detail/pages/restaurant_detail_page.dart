@@ -464,7 +464,7 @@ class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
                                     );
                                     cubit.clearForm();
                                     Navigation.back();
-                                  } //cubit.signUpFormSubmitted()
+                                  }
                                 : null,
                             child: const Padding(
                               padding: EdgeInsets.symmetric(vertical: 12),
