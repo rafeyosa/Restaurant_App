@@ -33,7 +33,6 @@ class SettingCubit extends Cubit<SettingState> {
     emit(state.copyWith(isScheduled: value));
   }
 
-
   Future<void> getPreferenceSetting(String keyStr) async {
     var value = await _repository.getPreferenceBoolean(keyStr);
     emit(state.copyWith(isScheduled: value));

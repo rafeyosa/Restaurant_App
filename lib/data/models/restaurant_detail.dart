@@ -5,18 +5,17 @@ import 'customer_review.dart';
 import 'menu.dart';
 
 class RestaurantDetail extends Equatable {
-  const RestaurantDetail({
-    required this.id,
-    required this.name,
-    required this.description,
-    required this.city,
-    required this.address,
-    required this.pictureId,
-    required this.categories,
-    required this.menus,
-    required this.rating,
-    required this.customerReviews
-  });
+  const RestaurantDetail(
+      {required this.id,
+      required this.name,
+      required this.description,
+      required this.city,
+      required this.address,
+      required this.pictureId,
+      required this.categories,
+      required this.menus,
+      required this.rating,
+      required this.customerReviews});
 
   final String id;
   final String? name;
@@ -64,17 +63,18 @@ class RestaurantDetail extends Equatable {
       );
 
   Map<String, dynamic> toJson() => {
-    'id': id,
-    'name': name,
-    'description': description,
-    'city': city,
-    'address': address,
-    'pictureId': pictureId,
-    'categories': List<Category>.from(categories.map((x) => x.toJson())),
-    'menus': menus?.toJson(),
-    'rating': rating,
-    'customerReviews': List<CustomerReview>.from(customerReviews.map((x) => x.toJson())),
-  };
+        'id': id,
+        'name': name,
+        'description': description,
+        'city': city,
+        'address': address,
+        'pictureId': pictureId,
+        'categories': List<Category>.from(categories.map((x) => x.toJson())),
+        'menus': menus?.toJson(),
+        'rating': rating,
+        'customerReviews':
+            List<CustomerReview>.from(customerReviews.map((x) => x.toJson())),
+      };
 
   @override
   List<Object?> get props => [

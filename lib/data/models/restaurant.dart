@@ -18,32 +18,44 @@ class Restaurant extends Equatable {
   final num? rating;
 
   factory Restaurant.fromJson(Map<String, dynamic> json) => Restaurant(
-    id: json['id'],
-    name: json['name'],
-    description: json['description'],
-    pictureId: json['pictureId'],
-    city: json['city'],
-    rating: json['rating'],
-  );
+        id: json['id'],
+        name: json['name'],
+        description: json['description'],
+        pictureId: json['pictureId'],
+        city: json['city'],
+        rating: json['rating'],
+      );
 
   Map<String, dynamic> toJson() => {
-    'id': id,
-    'name': name,
-    'description': description,
-    'pictureId': pictureId,
-    'city': city,
-    'rating': rating,
-  };
+        'id': id,
+        'name': name,
+        'description': description,
+        'pictureId': pictureId,
+        'city': city,
+        'rating': rating,
+      };
 
-@override
-  List<Object?> get props => [id, name, description, pictureId, city, rating];
+  @override
+  List<Object?> get props => [
+        id,
+        name,
+        description,
+        pictureId,
+        city,
+        rating,
+      ];
 }
 
 const String tableRestaurant = 'restaurants';
 
 class RestaurantField {
   static final List<String> values = [
-    id, name, description, pictureId, city, rating
+    id,
+    name,
+    description,
+    pictureId,
+    city,
+    rating
   ];
 
   static const String id = 'id';

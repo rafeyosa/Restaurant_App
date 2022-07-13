@@ -5,7 +5,7 @@ import 'category.dart';
 class Menu extends Equatable {
   const Menu({
     required this.foods,
-    required this.drinks
+    required this.drinks,
   });
 
   final List<Category> foods;
@@ -17,15 +17,20 @@ class Menu extends Equatable {
   );
 
   factory Menu.fromJson(Map<String, dynamic> json) => Menu(
-    foods: List<Category>.from((json['foods'] as List).map((x) => Category.fromJson(x))),
-    drinks: List<Category>.from((json['drinks'] as List).map((x) => Category.fromJson(x))),
-  );
+        foods: List<Category>.from(
+            (json['foods'] as List).map((x) => Category.fromJson(x))),
+        drinks: List<Category>.from(
+            (json['drinks'] as List).map((x) => Category.fromJson(x))),
+      );
 
   Map<String, dynamic> toJson() => {
-    'foods': List<Category>.from(foods.map((x) => x.toJson())),
-    'drinks': List<Category>.from(drinks.map((x) => x.toJson())),
-  };
+        'foods': List<Category>.from(foods.map((x) => x.toJson())),
+        'drinks': List<Category>.from(drinks.map((x) => x.toJson())),
+      };
 
-@override
-  List<Object?> get props => [foods, drinks];
+  @override
+  List<Object?> get props => [
+        foods,
+        drinks,
+      ];
 }

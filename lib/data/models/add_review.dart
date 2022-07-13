@@ -12,17 +12,21 @@ class AddReview extends Equatable {
   final String review;
 
   factory AddReview.fromJson(Map<String, dynamic> json) => AddReview(
-      id: json['id;'],
-      name: json['name'],
-      review: json['review'],
-  );
+        id: json['id;'],
+        name: json['name'],
+        review: json['review'],
+      );
 
   Map<String, dynamic> toJson() => {
-    'id': id,
-    'name': name,
-    'review': review,
-  };
+        'id': id,
+        'name': name,
+        'review': review,
+      };
 
   @override
-  List<Object?> get props => [id, name, review];
+  List<Object?> get props => [
+        id,
+        name,
+        review,
+      ];
 }

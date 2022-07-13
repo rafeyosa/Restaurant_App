@@ -12,31 +12,30 @@ class SettingPage extends StatelessWidget {
     final cubit = BlocProvider.of<SettingCubit>(context);
     cubit.getPreferenceSetting(prefsSettingKey);
     return Scaffold(
-        resizeToAvoidBottomInset: false,
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          elevation: 0.0,
-          title: const Text('Setting'),
-        ),
-        body: ListView(
-          children: [
-            ListTile(
-                title: const Text('Restaurant Notification'),
-                subtitle: const Text('Enable Notification'),
-                trailing: BlocBuilder<SettingCubit, SettingState>(
-                  builder: (context, state) {
-                    return Switch.adaptive(
-                      value: state.isScheduled,
-                      onChanged: (value) async {
-                        cubit.scheduledRestaurant(value);
-                        cubit.setPreferenceSetting(prefsSettingKey,value);
-                      },
-                    );
-                  },
-                )
-            ),
-          ],
-        )
+      resizeToAvoidBottomInset: false,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0.0,
+        title: const Text('Setting'),
+      ),
+      body: ListView(
+        children: [
+          ListTile(
+              title: const Text('Restaurant Notification'),
+              subtitle: const Text('Enable Notification'),
+              trailing: BlocBuilder<SettingCubit, SettingState>(
+                builder: (context, state) {
+                  return Switch.adaptive(
+                    value: state.isScheduled,
+                    onChanged: (value) async {
+                      cubit.scheduledRestaurant(value);
+                      cubit.setPreferenceSetting(prefsSettingKey, value);
+                    },
+                  );
+                },
+              )),
+        ],
+      ),
     );
   }
 }

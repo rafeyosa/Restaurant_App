@@ -4,7 +4,7 @@ class CustomerReview extends Equatable {
   const CustomerReview({
     required this.name,
     required this.review,
-    required this.date
+    required this.date,
   });
 
   final String name;
@@ -12,17 +12,21 @@ class CustomerReview extends Equatable {
   final String date;
 
   factory CustomerReview.fromJson(Map<String, dynamic> json) => CustomerReview(
-    name: json['name'],
-    review: json['review'],
-    date: json['date']
-  );
+        name: json['name'],
+        review: json['review'],
+        date: json['date'],
+      );
 
   Map<String, dynamic> toJson() => {
-    'name': name,
-    'review': review,
-    'date': date,
-  };
+        'name': name,
+        'review': review,
+        'date': date,
+      };
 
   @override
-  List<Object?> get props => [name, review, date];
+  List<Object?> get props => [
+        name,
+        review,
+        date,
+      ];
 }
