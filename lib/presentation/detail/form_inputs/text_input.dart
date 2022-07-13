@@ -1,8 +1,6 @@
 import 'package:formz/formz.dart';
 
-enum TextValidationError {
-  invalid
-}
+enum TextValidationError { invalid }
 
 class TextInput extends FormzInput<String, TextValidationError> {
   const TextInput.pure() : super.pure('');
