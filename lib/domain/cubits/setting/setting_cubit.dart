@@ -10,7 +10,7 @@ part 'setting_state.dart';
 class SettingCubit extends Cubit<SettingState> {
   SettingCubit() : super(const SettingState());
 
-  Future<bool> scheduledNews(bool isScheduled) async {
+  Future<bool> scheduledRestaurant(bool isScheduled) async {
     emit(state.copyWith(isScheduled: isScheduled));
 
     if (isScheduled) {

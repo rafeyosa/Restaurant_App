@@ -25,7 +25,7 @@ class SettingPage extends StatelessWidget {
                     return Switch.adaptive(
                       value: state.isScheduled,
                       onChanged: (value) async {
-                        cubit.scheduledNews(value);
+                        cubit.scheduledRestaurant(value);
                       },
                     );
                   },
