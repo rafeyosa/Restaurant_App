@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 class RestaurantMenuItem extends StatelessWidget {
-  const RestaurantMenuItem({Key? key, required this.name})
-      : super(key: key);
+  const RestaurantMenuItem({Key? key, required this.name}) : super(key: key);
 
   final String name;
 
@@ -63,7 +62,9 @@ class RestaurantMenuItem extends StatelessWidget {
                     'Rp. 100.000',
                     textAlign: TextAlign.end,
                     style: TextStyle(
-                        fontWeight: FontWeight.w600, color: Colors.black54),
+                      fontWeight: FontWeight.w600,
+                      color: Colors.black54,
+                    ),
                   ),
                 ),
               ),

@@ -305,7 +305,8 @@ class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
                           scrollDirection: Axis.horizontal,
                           itemCount: state.reviews.length,
                           itemBuilder: (context, index) {
-                            if (state.formStatus == FormzStatus.submissionInProgress) {
+                            if (state.formStatus ==
+                                FormzStatus.submissionInProgress) {
                               return const Center(
                                 child: Padding(
                                   padding: EdgeInsets.all(50),

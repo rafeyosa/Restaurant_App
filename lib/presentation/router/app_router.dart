@@ -31,7 +31,8 @@ class AppRouter {
     favoriteCubit = FavoriteCubit(repository);
     settingCubit = SettingCubit(repository);
     notificationHelper = NotificationHelper();
-    notificationHelper.configureSelectNotificationSubject(restaurantDetailPageRoute);
+    notificationHelper
+        .configureSelectNotificationSubject(restaurantDetailPageRoute);
   }
 
   Route? generateRoute(RouteSettings settings) {

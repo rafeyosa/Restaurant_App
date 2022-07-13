@@ -63,7 +63,11 @@ class CustomAppBar extends StatelessWidget {
         const SizedBox(height: 8),
         Container(
           margin: const EdgeInsets.symmetric(horizontal: 16),
-          padding: const EdgeInsets.only(left: 16, top: 2, bottom: 2),
+          padding: const EdgeInsets.only(
+            left: 16,
+            top: 2,
+            bottom: 2,
+          ),
           width: double.infinity,
           height: 50,
           decoration: BoxDecoration(

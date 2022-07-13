@@ -20,7 +20,12 @@ class RestaurantListItem extends StatelessWidget {
       ),
       child: Container(
         color: Colors.white,
-        padding: const EdgeInsets.only(left: 16, right: 8, top: 16, bottom: 16),
+        padding: const EdgeInsets.only(
+          left: 16,
+          right: 8,
+          top: 16,
+          bottom: 16,
+        ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -101,9 +106,10 @@ class RestaurantListItem extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                       maxLines: 2,
                       style: const TextStyle(
-                          fontWeight: FontWeight.normal,
-                          fontSize: 16,
-                          color: Colors.black54),
+                        fontWeight: FontWeight.normal,
+                        fontSize: 16,
+                        color: Colors.black54,
+                      ),
                     ),
                     Container(
                       margin: const EdgeInsets.symmetric(vertical: 12),
@@ -124,9 +130,10 @@ class RestaurantListItem extends StatelessWidget {
                           overflow: TextOverflow.ellipsis,
                           maxLines: 1,
                           style: const TextStyle(
-                              fontWeight: FontWeight.normal,
-                              fontSize: 16,
-                              color: Colors.black54),
+                            fontWeight: FontWeight.normal,
+                            fontSize: 16,
+                            color: Colors.black54,
+                          ),
                         ),
                       ],
                     )
