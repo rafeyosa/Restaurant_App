@@ -71,7 +71,7 @@ class RestaurantRepository {
       await restaurantDatabase.deleteRestaurant(id);
 
   Future<void> setPreferenceBoolean(String keyStr, bool value) async {
-    final prefs  = await SharedPreferences.getInstance();
+    final prefs = await SharedPreferences.getInstance();
 
     if (prefs.containsKey(keyStr)) {
       prefs.clear();
@@ -80,7 +80,7 @@ class RestaurantRepository {
   }
 
   Future<bool> getPreferenceBoolean(String keyStr) async {
-    final prefs  = await SharedPreferences.getInstance();
+    final prefs = await SharedPreferences.getInstance();
 
     if (prefs.containsKey(keyStr)) {
       var value = prefs.getBool(keyStr);

@@ -51,7 +51,8 @@ class RestaurantApi {
 
   Future<List<dynamic>> getRestaurantSearch(String search) async {
     try {
-      var url = Uri.parse(ApiConstant.restaurantSearchUrl).replace(queryParameters: {
+      var url =
+          Uri.parse(ApiConstant.restaurantSearchUrl).replace(queryParameters: {
         'q': search,
       });
       var response = await http.get(url);
@@ -76,13 +77,14 @@ class RestaurantApi {
   Future<List<dynamic>> addReview(dynamic reviewJson) async {
     try {
       var url = Uri.parse(ApiConstant.restaurantReviewUrl);
-      var response = await http.post(url,
-          headers: {
-        "Accept": "application/json",
-        "Content-Type": "application/json"
-      },
-          body: reviewJson,
-          encoding: Encoding.getByName("utf-8"),
+      var response = await http.post(
+        url,
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json"
+        },
+        body: reviewJson,
+        encoding: Encoding.getByName("utf-8"),
       );
 
       final dataJson = jsonDecode(response.body) as Map<String, dynamic>;

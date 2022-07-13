@@ -3,5 +3,5 @@ enum ResultStatus {
   noData,
   inProgress,
   failure,
-  success
+  success,
 }

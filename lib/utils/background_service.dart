@@ -31,7 +31,8 @@ class BackgroundService {
   static Future<void> callback() async {
     final NotificationHelper notificationHelper = NotificationHelper();
     var resultRaw = await RestaurantApi().getRestaurantList();
-    List<Restaurant> result = resultRaw.map((item) => Restaurant.fromJson(item)).toList();
+    List<Restaurant> result =
+        resultRaw.map((item) => Restaurant.fromJson(item)).toList();
 
     Random random = Random();
     var randomNumber = random.nextInt(result.length);
